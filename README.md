@@ -17,7 +17,7 @@ A modern, portable Neovim configuration powered by lazy.nvim for blazingly fast 
 
 ```bash
 # Clone this repo to your Neovim config directory
-git clone https://github.com/yourusername/neovim-config ~/.config/nvim
+git clone https://github.com/sdavis1902/neovim-config ~/.config/nvim
 
 # Install Neovim AppImage (portable)
 wget -O ~/nvim.appimage https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
