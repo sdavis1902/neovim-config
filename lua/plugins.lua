@@ -61,8 +61,14 @@ return {
   {
     "sonph/onehalf",
     config = function()
-      vim.cmd("colorscheme onehalflight")
-      vim.g.airline_theme = "onehalfdark"
+      -- Check if colorscheme exists before setting it
+      local ok, _ = pcall(vim.cmd, "colorscheme onehalflight")
+      if ok then
+        vim.g.airline_theme = "onehalfdark"
+      else
+        -- Fallback to a built-in colorscheme
+        vim.cmd("colorscheme default")
+      end
     end,
     lazy = false,
     priority = 1000
@@ -165,19 +171,6 @@ return {
   {
     "danbradbury/copilot-chat.vim",
     dependencies = { "github/copilot.vim" },
-    event = "VeryLazy"
-  },
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim",
-      "stevearc/dressing.nvim"
-    },
-    config = function()
-      require("codecompanion").setup()
-    end,
     event = "VeryLazy"
   },
 

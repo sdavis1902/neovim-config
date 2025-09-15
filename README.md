@@ -20,9 +20,16 @@ A modern, portable Neovim configuration powered by lazy.nvim for blazingly fast 
 git clone https://github.com/sdavis1902/neovim-config ~/.config/nvim
 
 # Install Neovim AppImage (portable)
-wget -O ~/nvim.appimage https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod +x ~/nvim.appimage
-sudo ln -s ~/nvim.appimage /usr/local/bin/nvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+chmod u+x nvim-linux-x86_64.appimage
+
+# Make it globally available
+sudo mkdir -p /opt/nvim
+sudo mv nvim-linux-x86_64.appimage /opt/nvim/nvim
+export PATH="$PATH:/opt/nvim/"
+
+# Add to your shell config for persistence
+echo 'export PATH="$PATH:/opt/nvim/"' >> ~/.bashrc
 
 # Open Neovim - lazy.nvim will auto-install and setup plugins
 nvim

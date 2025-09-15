@@ -1,10 +1,11 @@
 set nocompatible              " be iMproved, required
 
+" Set leader key BEFORE loading lazy.nvim
+let mapleader = ","
+
 " Load lazy.nvim plugin manager
 lua require('lazy-bootstrap')
 lua require('plugins')
-
-let mapleader = ","
 
 
 " set notermguicolors
@@ -47,7 +48,6 @@ nnoremap <Leader>u :syntax sync fromstart<cr>:redraw!<cr>
 nnoremap <tab> :bnext<Cr>
 nnoremap <Backspace> :bprevious<Cr>
 
-set pastetoggle=<leader>q
 
 if v:version > 799
     set rtp+=~/.fzf
