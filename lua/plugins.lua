@@ -61,12 +61,15 @@ return {
   {
     "sonph/onehalf",
     config = function()
-      -- Check if colorscheme exists before setting it
+      -- Add the vim subdirectory to runtime path (like the old Bundle rtp setting)
+      vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/lazy/onehalf/vim")
+
+      -- Now try to set the colorscheme
       local ok, _ = pcall(vim.cmd, "colorscheme onehalflight")
       if ok then
         vim.g.airline_theme = "onehalfdark"
       else
-        -- Fallback to a built-in colorscheme
+        print("Could not load onehalflight colorscheme")
         vim.cmd("colorscheme default")
       end
     end,
